@@ -7,6 +7,7 @@ import { enableScreens } from 'react-native-screens';
 import HomeScreen from './src/screens/HomeScreen';
 import BallScreen from './src/screens/BallScreen';
 import BoxDecay from './src/screens/BoxDecay';
+import FlipCard from './src/screens/FlipCard';
 
 const Stack = createSharedElementStackNavigator();
 enableScreens();
@@ -41,6 +42,8 @@ function MainNavigation (){
             <Stack.Screen name="BallScreen" component={BallScreen}  options={{headerShown: false}}/>
 
             <Stack.Screen name="BoxDecay" component={BoxDecay}  options={{headerShown: false}}/>
+            
+            <Stack.Screen name="FlipCard" component={FlipCard}  options={{headerShown: false}}/>
 
         </Stack.Navigator>
     )

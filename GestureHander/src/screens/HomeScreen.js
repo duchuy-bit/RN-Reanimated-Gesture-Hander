@@ -4,6 +4,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { MotiView } from 'moti';
 import { useNavigation } from '@react-navigation/native';
 
+import Animated, { FadeIn, FadeOut, FadeInUp, FadeInDown } from 'react-native-reanimated';
+
+
 const {width, height}  =Dimensions.get('window')
 
 const listScreen = [
@@ -18,7 +21,7 @@ const listScreen = [
         image: require("../assets/images/main/boxdecay.jpg"),
     },
     {
-        name: "BallScreen",
+        name: "FlipCard",
         title: 'Flip Card',
         image: require("../assets/images/main/flipcard.jpg"),
     },
@@ -49,7 +52,7 @@ export default function HomeScreen() {
     const navigation = useNavigation();
 
   return (
-    <View style={{flex: 1 }}>
+    <View style={{flex: 1, backgroundColor:"white" }}>
         {/* ============================================================ */}
         <SafeAreaView/>
         
@@ -61,7 +64,7 @@ export default function HomeScreen() {
                 ListHeaderComponent={()=>{
                     return(
                         <View style={{paddingLeft: 30, paddingTop: 40, paddingBottom: 16}}>
-                            <Text style={{color:'#000', fontFamily: 'Montserrat-Bold', fontSize: 30}}>DEV BEAR</Text>
+                            <Text style={{color:'#000', fontFamily: 'Montserrat-Bold', fontSize: 30}}>DEV MOBILE</Text>
                         </View>
                     )
                 }}
@@ -71,11 +74,13 @@ export default function HomeScreen() {
                 showsVerticalScrollIndicator={false}
                 renderItem={({item, index})=>{
                     return(
-                    <MotiView 
+                    <MotiView
+                        // entering={FadeInDown} exiting={FadeInUp}
                         from={{ opacity: 0, translateY: 40 }}
                         animate={{ opacity: 1, translateY: 0 }}
                         delay={index* 100}
                         exit={{ opacity: 0 }}
+                        // transition={200}
                         // style={{backgroundColor:'white'}}
                     >
                         <Pressable onPress={()=> navigation.navigate(item.name)} style={[styles.itemScreenContainer,{marginLeft: index %2 === 0? 16: 10}]}>
